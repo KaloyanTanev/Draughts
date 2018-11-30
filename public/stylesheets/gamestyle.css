@@ -1,0 +1,471 @@
+body{
+    background-color: #FFF6F2;
+    background-size: cover;
+    max-width: 1920px;
+    max-height: 1080px;
+}
+
+.circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 5.6%;
+    padding-right: 5.34%;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px 1px rgb(24, 24, 24);
+}
+
+.circleSmall{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 15%;
+    padding-right: 15%;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px 1px rgb(24, 24, 24);
+}
+
+.redCircle{
+    background-color: #9A3131;
+}
+
+.whiteCircle{
+    background-color: #F2F2F2;
+}
+
+.placeholder{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F2F2F2;
+    padding-top: 6.95%;
+    padding-right: 6.95%;
+    border-style: solid;
+    border-color: #707070;
+    border-width: 1px;
+}
+
+.placeholderlight{
+    background-color: #EDDBAA;
+}
+
+.placeholderdark{
+    background-color: #3B3934;
+}
+
+
+button:focus{
+    outline: 0;
+}
+
+#quit{
+    font-family: serif;
+    font-size: 300%;
+    position: absolute;
+    font-family: serif;
+    margin-top: 52%;
+    margin-left: 92%;
+}
+
+#timer{
+    position: absolute;
+    display: inline-block;
+    margin-left: 86%;
+    margin-top: 2%;
+    font-family: serif;
+    font-size: 350%;
+
+}
+
+#result{
+    display: inline-block;
+    width: 20%;
+    position: absolute;
+}
+
+#redScore{
+    display: inline-block;
+    margin-left: 37%;
+    margin-top: 14%;
+    font-family: serif;
+    font-size: 240%;
+}
+
+#whiteScore{
+    display: inline-block;
+    margin-left: 37%;
+    margin-top: 13%;
+    font-family: serif;
+    font-size: 240%;
+}
+
+#whiteScoreCircle{
+    transform: translate(100%, 240%);
+}
+
+#redScoreCircle{
+    transform: translate(100%, 80%);
+}
+
+/*
+    squares naming = squareRowColumn
+    row movement = 101%
+    col movement = 99%
+*/
+
+#square11{
+    transform: translate(310.5%, 3%);
+}
+
+#square12{
+    transform: translate(409.5%, 3%);
+}
+
+#square13{
+    transform: translate(508.5%, 3%);
+}
+
+#square14{
+    transform: translate(607.5%, 3%);
+}
+
+#square15{
+    transform: translate(706.5%, 3%);
+}
+
+#square16{
+    transform: translate(805.5%, 3%);
+}
+
+#square17{
+    transform: translate(904.5%, 3%);
+}
+
+#square18{
+    transform: translate(1003.5%, 3%);
+}
+
+#square21{
+    transform: translate(310.5%, 102%);
+}
+
+#square22{
+    transform: translate(409.5%, 102%);
+}
+
+#square23{
+    transform: translate(508.5%, 102%);
+}
+
+#square24{
+    transform: translate(607.5%, 102%);
+}
+
+#square25{
+    transform: translate(706.5%, 102%);
+}
+
+#square26{
+    transform: translate(805.5%, 102%);
+}
+
+#square27{
+    transform: translate(904.5%, 102%);
+}
+
+#square28{
+    transform: translate(1003.5%, 102%);
+}
+
+#square31{
+    transform: translate(310.5%, 201%);
+}
+
+#square32{
+    transform: translate(409.5%, 201%);
+}
+
+#square33{
+    transform: translate(508.5%, 201%);
+}
+
+#square34{
+    transform: translate(607.5%, 201%);
+}
+
+#square35{
+    transform: translate(706.5%, 201%);
+}
+
+#square36{
+    transform: translate(805.5%, 201%);
+}
+
+#square37{
+    transform: translate(904.5%, 201%);
+}
+
+#square38{
+    transform: translate(1003.5%, 201%);
+}
+
+#square41{
+    transform: translate(310.5%, 300%);
+}
+
+#square42{
+    transform: translate(409.5%, 300%);
+}
+
+#square43{
+    transform: translate(508.5%, 300%);
+}
+
+#square44{
+    transform: translate(607.5%, 300%);
+}
+
+#square45{
+    transform: translate(706.5%, 300%);
+}
+
+#square46{
+    transform: translate(805.5%, 300%);
+}
+
+#square47{
+    transform: translate(904.5%, 300%);
+}
+
+#square48{
+    transform: translate(1003.5%, 300%);
+}
+
+#square51{
+    transform: translate(310.5%, 399%);
+}
+
+#square52{
+    transform: translate(409.5%, 399%);
+}
+
+#square53{
+    transform: translate(508.5%, 399%);
+}
+
+#square54{
+    transform: translate(607.5%, 399%);
+}
+
+#square55{
+    transform: translate(706.5%, 399%);
+}
+
+#square56{
+    transform: translate(805.5%, 399%);
+}
+
+#square57{
+    transform: translate(904.5%, 399%);
+}
+
+#square58{
+    transform: translate(1003.5%, 399%);
+}
+
+#square61{
+    transform: translate(310.5%, 498%);
+}
+
+#square62{
+    transform: translate(409.5%, 498%);
+}
+
+#square63{
+    transform: translate(508.5%, 498%);
+}
+
+#square64{
+    transform: translate(607.5%, 498%);
+}
+
+#square65{
+    transform: translate(706.5%, 498%);
+}
+
+#square66{
+    transform: translate(805.5%, 498%);
+}
+
+#square67{
+    transform: translate(904.5%, 498%);
+}
+
+#square68{
+    transform: translate(1003.5%, 498%);
+}
+
+#square71{
+    transform: translate(310.5%, 597%);
+}
+
+#square72{
+    transform: translate(409.5%, 597%);
+}
+
+#square73{
+    transform: translate(508.5%, 597%);
+}
+
+#square74{
+    transform: translate(607.5%, 597%);
+}
+
+#square75{
+    transform: translate(706.5%, 597%);
+}
+
+#square76{
+    transform: translate(805.5%, 597%);
+}
+
+#square77{
+    transform: translate(904.5%, 597%);
+}
+
+#square78{
+    transform: translate(1003.5%, 597%);
+}
+
+#square81{
+    transform: translate(310.5%, 696%);
+}
+
+#square82{
+    transform: translate(409.5%, 696%);
+}
+
+#square83{
+    transform: translate(508.5%, 696%);
+}
+
+#square84{
+    transform: translate(607.5%, 696%);
+}
+
+#square85{
+    transform: translate(706.5%, 696%);
+}
+
+#square86{
+    transform: translate(805.5%, 696%);
+}
+
+#square87{
+    transform: translate(904.5%, 696%);
+}
+
+#square88{
+    transform: translate(1003.5%, 696%);
+}
+/* 
+row movement = 121%
+col movement = 120.25%
+*/
+
+#redtoken1{
+    transform: translate(387%, 858.5%);
+}
+
+#redtoken2{
+    transform: translate(627.5%, 858.5%);
+}
+
+#redtoken3{
+    transform: translate(868%, 858.5%);
+}
+
+#redtoken4{
+    transform: translate(1108.5%, 858.5%);
+}
+
+#redtoken5{
+    transform: translate(508%, 737.5%);
+}
+
+#redtoken6{
+    transform: translate(748.5%, 737.5%);
+}
+
+#redtoken7{
+    transform: translate(989%, 737.5%);
+}
+
+#redtoken8{
+    transform: translate(1229.5%, 737.5%);
+}
+
+#redtoken9{
+    transform: translate(387%, 616.5%);
+}
+
+#redtoken10{
+    transform: translate(627.5%, 616.5%);
+}
+
+#redtoken11{
+    transform: translate(868%, 616.5%);
+}
+
+#redtoken12{
+    transform: translate(1108.5%, 616.5%);
+}
+
+#whitetoken1{
+    transform: translate(508%, 11.5%);
+}
+
+#whitetoken2{
+    transform: translate(748.5%, 11.5%);
+}
+
+#whitetoken3{
+    transform: translate(989%, 11.5%);
+}
+
+#whitetoken4{
+    transform: translate(1229.5%, 11.5%);
+}
+
+#whitetoken5{
+    transform: translate(387%, 132.5%);
+}
+
+#whitetoken6{
+    transform: translate(627.5%, 132.5%);
+}
+
+#whitetoken7{
+    transform: translate(868%, 132.5%);
+}
+
+#whitetoken8{
+    transform: translate(1108.5%, 132.5%);
+}
+
+#whitetoken9{
+    transform: translate(508%, 253.5%);
+}
+
+#whitetoken10{
+    transform: translate(748.5%, 253.5%);
+}
+
+#whitetoken11{
+    transform: translate(989%, 253.5%);
+}
+
+#whitetoken12{
+    transform: translate(1229.5%, 253.5%);
+}
+
