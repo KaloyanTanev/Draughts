@@ -1,0 +1,53 @@
+body{
+  background-image: url("../images/splash.png");
+  background-size: cover;
+  max-width: 1920px;
+  max-height: 1080px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.redCircle{
+  padding-top: 24%;
+  width: 24%;
+  background-color: #9A3131;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 3.5%;
+}
+
+.playPos{
+  margin-left: 38.1%;
+  margin-top: 4.8%;
+}
+
+.statsPos{
+  margin-left: 71.6%;
+  margin-top: 2.3%;
+}
+
+#stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(5.8%, 17%);
+  font-size: 40px;
+  text-align: center;
+  font-family: serif;
+  color: #FFFBF2;
+}
+
+#play{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(58%, 65%);
+  font-size: 40px;
+  text-align: center;
+  font-family: serif;
+  color: #FFFBF2;
+}
+
+ul{
+  list-style-type: none;
+}
