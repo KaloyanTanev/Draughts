@@ -37,7 +37,6 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #F2F2F2;
     padding-top: 6.95%;
     padding-right: 6.95%;
     border-style: solid;
@@ -53,9 +52,30 @@ body{
     background-color: #3B3934;
 }
 
-
 button:focus{
     outline: 0;
+}
+
+#moveCircle{
+    margin-top: 12.2%;
+    margin-left: 9.5%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 4%;
+    padding-right: 4%;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px 1px rgb(24, 24, 24);
+}
+
+#move{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 13%;
+    margin-left: 2%;
+    font-family: serif;
+    font-size: 40px;
 }
 
 #quit{
@@ -368,104 +388,105 @@ button:focus{
 #square88{
     transform: translate(1003.5%, 696%);
 }
+
 /* 
 row movement = 121%
 col movement = 120.25%
 */
 
-#redtoken1{
+#red1{
     transform: translate(387%, 858.5%);
 }
 
-#redtoken2{
+#red2{
     transform: translate(627.5%, 858.5%);
 }
 
-#redtoken3{
+#red3{
     transform: translate(868%, 858.5%);
 }
 
-#redtoken4{
+#red4{
     transform: translate(1108.5%, 858.5%);
 }
 
-#redtoken5{
+#red5{
     transform: translate(508%, 737.5%);
 }
 
-#redtoken6{
+#red6{
     transform: translate(748.5%, 737.5%);
 }
 
-#redtoken7{
+#red7{
     transform: translate(989%, 737.5%);
 }
 
-#redtoken8{
+#red8{
     transform: translate(1229.5%, 737.5%);
 }
 
-#redtoken9{
+#red9{
     transform: translate(387%, 616.5%);
 }
 
-#redtoken10{
+#red10{
     transform: translate(627.5%, 616.5%);
 }
 
-#redtoken11{
+#red11{
     transform: translate(868%, 616.5%);
 }
 
-#redtoken12{
+#red12{
     transform: translate(1108.5%, 616.5%);
 }
 
-#whitetoken1{
+#white1{
     transform: translate(508%, 11.5%);
 }
 
-#whitetoken2{
+#white2{
     transform: translate(748.5%, 11.5%);
 }
 
-#whitetoken3{
+#white3{
     transform: translate(989%, 11.5%);
 }
 
-#whitetoken4{
+#white4{
     transform: translate(1229.5%, 11.5%);
 }
 
-#whitetoken5{
+#white5{
     transform: translate(387%, 132.5%);
 }
 
-#whitetoken6{
+#white6{
     transform: translate(627.5%, 132.5%);
 }
 
-#whitetoken7{
+#white7{
     transform: translate(868%, 132.5%);
 }
 
-#whitetoken8{
+#white8{
     transform: translate(1108.5%, 132.5%);
 }
 
-#whitetoken9{
+#white9{
     transform: translate(508%, 253.5%);
 }
 
-#whitetoken10{
+#white10{
     transform: translate(748.5%, 253.5%);
 }
 
-#whitetoken11{
+#white11{
     transform: translate(989%, 253.5%);
 }
 
-#whitetoken12{
+#white12{
     transform: translate(1229.5%, 253.5%);
 }
 

@@ -22,9 +22,14 @@
 
             <span id="timer">00:00</span>
 
+            <div>
+                <span id="move">MOVE: </span>
+                <span id="moveCircle"></span>
+            </div>
+
             <span id="quit">QUIT</span>
 
-            <div id="row1">
+            <div onload = "row(1)" id="row1">
                 <span id ="square11" class="placeholder placeholderlight"></span>
                 <span id ="square12" class="placeholder placeholderdark"></span>
                 <span id ="square13" class="placeholder placeholderlight"></span>
@@ -33,13 +38,13 @@
                 <span id ="square16" class="placeholder placeholderdark"></span>
                 <span id ="square17" class="placeholder placeholderlight"></span>
                 <span id ="square18" class="placeholder placeholderdark"></span>
-                <button id ="whitetoken1" class="circle whiteCircle"></button>
-                <button id ="whitetoken2" class="circle whiteCircle"></button>
-                <button id ="whitetoken3" class="circle whiteCircle"></button>
-                <button id ="whitetoken4" class="circle whiteCircle"></button>
+                <button onclick = "move(this.id)" id ="white1" class="circle whiteCircle"></button>
+                <button onclick = "move(this.id)" id ="white2" class="circle whiteCircle"></button>
+                <button onclick = "move(this.id)" id ="white3" class="circle whiteCircle"></button>
+                <button onclick = "move(this.id)" id ="white4" class="circle whiteCircle"></button>
             </div>
 
-            <div id="row2">
+            <div onload = "row(2)" id="row2">
                 <span id ="square21" class="placeholder placeholderdark"></span>
                 <span id ="square22" class="placeholder placeholderlight"></span>
                 <span id ="square23" class="placeholder placeholderdark"></span>
@@ -48,13 +53,13 @@
                 <span id ="square26" class="placeholder placeholderlight"></span>
                 <span id ="square27" class="placeholder placeholderdark"></span>
                 <span id ="square28" class="placeholder placeholderlight"></span>
-                <button id ="whitetoken5" class="circle whiteCircle"></button>
-                <button id ="whitetoken6" class="circle whiteCircle"></button>
-                <button id ="whitetoken7" class="circle whiteCircle"></button>
-                <button id ="whitetoken8" class="circle whiteCircle"></button>
+                <button onclick = "newToken(2, 1, 'white')" id ="white5" class="circle whiteCircle"></button>
+                <button onclick = "newToken(2, 3, 'white')" id ="white6" class="circle whiteCircle"></button>
+                <button onclick = "newToken(2, 5, 'white')" id ="white7" class="circle whiteCircle"></button>
+                <button onclick = "newToken(2, 7, 'white')" id ="white8" class="circle whiteCircle"></button>
             </div>
 
-            <div id="row3">
+            <div onload = "row(3)" id="row3">
                 <span id ="square31" class="placeholder placeholderlight"></span>
                 <span id ="square32" class="placeholder placeholderdark"></span>
                 <span id ="square33" class="placeholder placeholderlight"></span>
@@ -63,13 +68,13 @@
                 <span id ="square36" class="placeholder placeholderdark"></span>
                 <span id ="square37" class="placeholder placeholderlight"></span>
                 <span id ="square38" class="placeholder placeholderdark"></span>
-                <button id ="whitetoken9" class="circle whiteCircle"></button>
-                <button id ="whitetoken10" class="circle whiteCircle"></button>
-                <button id ="whitetoken11" class="circle whiteCircle"></button>
-                <button id ="whitetoken12" class="circle whiteCircle"></button>
+                <button onclick = "newToken(3, 2, 'white')" id ="white9" class="circle whiteCircle"></button>
+                <button onclick = "newToken(3, 4, 'white')" id ="white10" class="circle whiteCircle"></button>
+                <button onclick = "newToken(3, 6, 'white')" id ="white11" class="circle whiteCircle"></button>
+                <button onclick = "newToken(3, 8, 'white')" id ="white12" class="circle whiteCircle"></button>
             </div>
 
-            <div id="row4">
+            <div onload = "row(4)" id="row4">
                 <span id ="square41" class="placeholder placeholderdark"></span>
                 <span id ="square42" class="placeholder placeholderlight"></span>
                 <span id ="square43" class="placeholder placeholderdark"></span>
@@ -80,7 +85,7 @@
                 <span id ="square48" class="placeholder placeholderlight"></span>
             </div>
 
-            <div id="row5">
+            <div onload = "row(5)" id="row5">
                 <span id ="square51" class="placeholder placeholderlight"></span>
                 <span id ="square52" class="placeholder placeholderdark"></span>
                 <span id ="square53" class="placeholder placeholderlight"></span>
@@ -91,7 +96,7 @@
                 <span id ="square58" class="placeholder placeholderdark"></span>
             </div>
 
-            <div id="row6">
+            <div onload = "row(6)" id="row6">
                 <span id ="square61" class="placeholder placeholderdark"></span>
                 <span id ="square62" class="placeholder placeholderlight"></span>
                 <span id ="square63" class="placeholder placeholderdark"></span>
@@ -100,13 +105,13 @@
                 <span id ="square66" class="placeholder placeholderlight"></span>
                 <span id ="square67" class="placeholder placeholderdark"></span>
                 <span id ="square68" class="placeholder placeholderlight"></span>
-                <button id ="redtoken9" class="circle redCircle"></button>
-                <button id ="redtoken10" class="circle redCircle"></button>
-                <button id ="redtoken11" class="circle redCircle"></button>
-                <button id ="redtoken12" class="circle redCircle"></button>
+                <button id ="red9" class="circle redCircle"></button>
+                <button id ="red10" class="circle redCircle"></button>
+                <button id ="red11" class="circle redCircle"></button>
+                <button id ="red12" class="circle redCircle"></button>
             </div>
 
-            <div id="row7">
+            <div onload = "row(7)" id="row7">
                 <span id ="square71" class="placeholder placeholderlight"></span>
                 <span id ="square72" class="placeholder placeholderdark"></span>
                 <span id ="square73" class="placeholder placeholderlight"></span>
@@ -115,13 +120,13 @@
                 <span id ="square76" class="placeholder placeholderdark"></span>
                 <span id ="square77" class="placeholder placeholderlight"></span>
                 <span id ="square78" class="placeholder placeholderdark"></span>
-                <button id ="redtoken5" class="circle redCircle"></button>
-                <button id ="redtoken6" class="circle redCircle"></button>
-                <button id ="redtoken7" class="circle redCircle"></button>
-                <button id ="redtoken8" class="circle redCircle"></button>
+                <button id ="red5" class="circle redCircle"></button>
+                <button id ="red6" class="circle redCircle"></button>
+                <button id ="red7" class="circle redCircle"></button>
+                <button id ="red8" class="circle redCircle"></button>
             </div>
 
-            <div id="row8">
+            <div onload = "row(8)" id="row8">
                 <span id ="square81" class="placeholder placeholderdark"></span>
                 <span id ="square82" class="placeholder placeholderlight"></span>
                 <span id ="square83" class="placeholder placeholderdark"></span>
@@ -130,12 +135,13 @@
                 <span id ="square86" class="placeholder placeholderlight"></span>
                 <span id ="square87" class="placeholder placeholderdark"></span>
                 <span id ="square88" class="placeholder placeholderlight"></span>
-                <button id ="redtoken1" class="circle redCircle"></button>
-                <button id ="redtoken2" class="circle redCircle"></button>
-                <button id ="redtoken3" class="circle redCircle"></button>
-                <button id ="redtoken4" class="circle redCircle"></button>
+                <button id ="red1" class="circle redCircle"></button>
+                <button id ="red2" class="circle redCircle"></button>
+                <button id ="red3" class="circle redCircle"></button>
+                <button id ="red4" class="circle redCircle"></button>
             </div>
 
         </div>
+        <script src="public/javascripts/game.js" type="text/javascript"></script>
     </body>
 </html>
