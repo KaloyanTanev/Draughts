@@ -4,6 +4,7 @@ var currentToken;
 var isTokenClicked = false;
 var isTokenClickedTileCol;
 var isTokenClickedTileRow;
+var coloredTiles = [];
 
 class tile{
     constructor(row, col, available){
@@ -138,11 +139,11 @@ window.onload = function() {
 }
 
 function move(token){
-    var coloredTiles = [];
     var tokenString = token.toString();
 
     if(isTokenClicked == true){
         isTokenClicked = false;
+        console.log(coloredTiles.length + "kurec");
         for(var i=0; i<coloredTiles.length; i++){
             document.getElementById("square" + coloredTiles[i].getRow() + coloredTiles[i].getCol()).style.backgroundColor = "transparent";
         }
@@ -155,6 +156,26 @@ function move(token){
             if(number == tokens[i].getId()){
                 for(var j=0; j<tiles.length; j++){
                     if( (tiles[j].getCol() + 1 == tokens[i].getCol() || tiles[j].getCol() - 1 == tokens[i].getCol()) && tiles[j].getRow() - 1 == tokens[i].getRow() && tiles[j].getAvailable() == true){
+                        document.getElementById("square" + tiles[j].getRow() + tiles[j].getCol()).style.backgroundColor = "green";
+                        coloredTiles.push(tiles[j]);
+                        currentToken = tokens[i];
+                        isTokenClicked = true;
+                        isTokenClickedTileRow = tokens[i].getRow();
+                        isTokenClickedTileCol = tokens[i].getCol();
+                        console.log(coloredTiles.length);
+                    }
+                }
+            }
+        }
+    }
+
+    if(tokenString.includes("red") && isTokenClicked == false){
+        var number = parseInt(tokenString.substring(3));
+        for(var i=11; i<tokens.length; i++){
+            if(number == tokens[i].getId()){
+                for(var j=0; j<tiles.length; j++){
+                    console.log(2);
+                    if( (tiles[j].getCol() + 1 == tokens[i].getCol() || tiles[j].getCol() - 1 == tokens[i].getCol()) && tiles[j].getRow() + 1 == tokens[i].getRow() && tiles[j].getAvailable() == true){
                         document.getElementById("square" + tiles[j].getRow() + tiles[j].getCol()).style.backgroundColor = "green";
                         coloredTiles.push(tiles[j]);
                         currentToken = tokens[i];
@@ -214,9 +235,6 @@ function moveTo(square){
                         
                         tokens[j].setCol(tokens[j].getCol() + chosenPos);
                         tokens[j].setRow(tokens[j].getRow() + 1);
-                        for(var k=0; k<tiles.length; k++){
-                            console.log(tiles[k].getRow() + " " + tiles[k].getCol() + " " + tiles[k].getAvailable());
-                        }
                         isTokenClicked = false;
                         isTokenClickedTileCol = "";
                         isTokenClickedTileRow = "";
