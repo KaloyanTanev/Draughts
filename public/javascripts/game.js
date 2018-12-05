@@ -7,12 +7,16 @@ var isTokenClickedTileRow;
 var coloredTiles = [];
 
 class tile{
-    constructor(row, col, available){
+    constructor(row, col, available, color){
         this.row = row;
         this.col = col;
         this.available = available;
+        this.color = color;
     }
 
+    getColor(){
+        return this.color;
+    }
     getRow(){
         return this.row;
     }
@@ -25,8 +29,15 @@ class tile{
         return this.available;
     }
 
+    setColor(newColor){
+        this.color = newColor;
+    }
+
     setAvailable(newAvailable){
         this.available = newAvailable;
+        if(newAvailable == true){
+            this.setColor(" ");
+        }
     }
 
 }
@@ -102,6 +113,8 @@ window.onload = function() {
             
             if(tokens[j].getCol() == tiles[i].getCol() && tokens[j].getRow() == tiles[i].getRow()){
                 tiles[i].setAvailable(false);
+                if(tiles[i].getRow()<=3)  tiles[i].setColor("white");
+                if(tiles[i].getRow()>=6)  tiles[i].setColor("red");
                 break;
             }
             else{
@@ -123,18 +136,18 @@ window.onload = function() {
     document.getElementById("white11").style.transform = "translate(988.25%, 253.5%)";
     document.getElementById("white12").style.transform = "translate(1228.75%, 253.5%)";
 
-    document.getElementById("red1").style.transform = "translate(387%, 858.5%)";
-    document.getElementById("red2").style.transform = "translate(627.5%, 858.5%)";
-    document.getElementById("red3").style.transform = "translate(868%, 858.5%)";
-    document.getElementById("red4").style.transform = "translate(1108.5%, 858.5%)";
+    document.getElementById("red1").style.transform = "translate(387%, 616.5%)";
+    document.getElementById("red2").style.transform = "translate(627.5%, 616.5%)";
+    document.getElementById("red3").style.transform = "translate(868%, 616.5%)";
+    document.getElementById("red4").style.transform = "translate(1108.5%, 616.5%)";
     document.getElementById("red5").style.transform = "translate(507.25%, 737.5%)";
     document.getElementById("red6").style.transform = "translate(747.75%, 737.5%)";
     document.getElementById("red7").style.transform = "translate(988.25%, 737.5%)";
     document.getElementById("red8").style.transform = "translate(1228.75%, 737.5%)";
-    document.getElementById("red9").style.transform = "translate(387%, 616.5%)";
-    document.getElementById("red10").style.transform = "translate(627.5%, 616.5%)";
-    document.getElementById("red11").style.transform = "translate(868%, 616.5%)";
-    document.getElementById("red12").style.transform = "translate(1108.5%, 616.5%)";
+    document.getElementById("red9").style.transform = "translate(387%, 858.5%)";
+    document.getElementById("red10").style.transform = "translate(627.5%, 858.5%)";
+    document.getElementById("red11").style.transform = "translate(868%, 858.5%)";
+    document.getElementById("red12").style.transform = "translate(1108.5%, 858.5%)";
 
 }
 
@@ -143,7 +156,6 @@ function move(token){
 
     if(isTokenClicked == true){
         isTokenClicked = false;
-        console.log(coloredTiles.length + "kurec");
         for(var i=0; i<coloredTiles.length; i++){
             document.getElementById("square" + coloredTiles[i].getRow() + coloredTiles[i].getCol()).style.backgroundColor = "transparent";
         }
@@ -162,7 +174,6 @@ function move(token){
                         isTokenClicked = true;
                         isTokenClickedTileRow = tokens[i].getRow();
                         isTokenClickedTileCol = tokens[i].getCol();
-                        console.log(coloredTiles.length);
                     }
                 }
             }
@@ -171,10 +182,10 @@ function move(token){
 
     if(tokenString.includes("red") && isTokenClicked == false){
         var number = parseInt(tokenString.substring(3));
-        for(var i=11; i<tokens.length; i++){
+        for(var i=12; i<tokens.length; i++){
             if(number == tokens[i].getId()){
+                console.log(tokens[i]);
                 for(var j=0; j<tiles.length; j++){
-                    console.log(2);
                     if( (tiles[j].getCol() + 1 == tokens[i].getCol() || tiles[j].getCol() - 1 == tokens[i].getCol()) && tiles[j].getRow() + 1 == tokens[i].getRow() && tiles[j].getAvailable() == true){
                         document.getElementById("square" + tiles[j].getRow() + tiles[j].getCol()).style.backgroundColor = "green";
                         coloredTiles.push(tiles[j]);
@@ -200,6 +211,7 @@ function moveTo(square){
             if( (document.getElementById("square" + tiles[i].getRow() + tiles[i].getCol()).style.backgroundColor == "green") && tiles[i].getRow() == currentRow && tiles[i].getCol() == currentCol){
                 for(var j=0; j<tokens.length; j++){
                     if(tokens[j].getRow() == currentToken.getRow() && tokens[j].getCol() == currentToken.getCol()){
+                        
                         var transform = document.getElementById(tokens[j].getColor() + tokens[j].getId()).style.transform;
                         transform = transform.substring(10);
                         var coords = transform.split(" ");
@@ -207,16 +219,32 @@ function moveTo(square){
                         coords[1].replace(/%|,/g, "");
                         var y = parseInt(coords[1].replace(')', ""));
 
-                        if(tiles[i].getCol() - 1 == tokens[j].getCol()){
-                            x += 120.25;
-                            y += 121;
-                            chosenPos = +1;
+                        if(tokens[j].getColor() == "white"){
+                            if(tiles[i].getCol() - 1 == tokens[j].getCol()){
+                                x += 120.25;
+                                y += 121;
+                                chosenPos = +1;
+                            }
+
+                            if(tiles[i].getCol() + 1 == tokens[j].getCol()){
+                                x -= 120.25;
+                                y += 121;
+                                chosenPos = -1
+                            }
                         }
 
-                        if(tiles[i].getCol() + 1 == tokens[j].getCol()){
-                            x -= 120.25;
-                            y += 121;
-                            chosenPos = -1
+                        if(tokens[j].getColor() == "red"){
+                            if(tiles[i].getCol() - 1 == tokens[j].getCol()){
+                                x += 120.25;
+                                y -= 121;
+                                chosenPos = -1;
+                            }
+
+                            if(tiles[i].getCol() + 1 == tokens[j].getCol()){
+                                x -= 120.25;
+                                y -= 121;
+                                chosenPos = +1
+                            }
                         }
 
                         var transl = "translate(" + x + "%, " + y + "%)";
@@ -233,11 +261,23 @@ function moveTo(square){
                             }
                         }
                         
-                        tokens[j].setCol(tokens[j].getCol() + chosenPos);
-                        tokens[j].setRow(tokens[j].getRow() + 1);
+                        if(tokens[j].getColor() == "white"){
+                            tokens[j].setRow(tokens[j].getRow() + 1);
+                            tokens[j].setCol(tokens[j].getCol() + chosenPos);
+                            tiles[i].setColor("white");
+                            
+                        }
+                        if(tokens[j].getColor() == "red"){
+                            tokens[j].setRow(tokens[j].getRow() - 1);
+                            tokens[j].setCol(tokens[j].getCol() - chosenPos);
+                            tiles[i].setColor("red");
+                        }
                         isTokenClicked = false;
                         isTokenClickedTileCol = "";
                         isTokenClickedTileRow = "";
+                        for (var k = 0; k<tiles.length; k++){
+                            console.log(tiles[k].getRow() + "" + tiles[k].getCol() + " " + tiles[k].getColor());
+                        }
                     }
                 }
             }
