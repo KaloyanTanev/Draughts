@@ -1,5 +1,5 @@
 body{
-    background-color: #FFF6F2;
+    background-image: url("../images/background.png");
     background-size: cover;
     max-width: 1920px;
     max-height: 1080px;
@@ -42,14 +42,8 @@ body{
     border-style: solid;
     border-color: #707070;
     border-width: 1px;
-}
-
-.placeholderlight{
-    background-color: #EDDBAA;
-}
-
-.placeholderdark{
-    background-color: #3B3934;
+    background-color: transparent;
+    z-index: -1;
 }
 
 button:focus{
@@ -393,100 +387,3 @@ button:focus{
 row movement = 121%
 col movement = 120.25%
 */
-
-#red1{
-    transform: translate(387%, 858.5%);
-}
-
-#red2{
-    transform: translate(627.5%, 858.5%);
-}
-
-#red3{
-    transform: translate(868%, 858.5%);
-}
-
-#red4{
-    transform: translate(1108.5%, 858.5%);
-}
-
-#red5{
-    transform: translate(508%, 737.5%);
-}
-
-#red6{
-    transform: translate(748.5%, 737.5%);
-}
-
-#red7{
-    transform: translate(989%, 737.5%);
-}
-
-#red8{
-    transform: translate(1229.5%, 737.5%);
-}
-
-#red9{
-    transform: translate(387%, 616.5%);
-}
-
-#red10{
-    transform: translate(627.5%, 616.5%);
-}
-
-#red11{
-    transform: translate(868%, 616.5%);
-}
-
-#red12{
-    transform: translate(1108.5%, 616.5%);
-}
-
-#white1{
-    transform: translate(508%, 11.5%);
-}
-
-#white2{
-    transform: translate(748.5%, 11.5%);
-}
-
-#white3{
-    transform: translate(989%, 11.5%);
-}
-
-#white4{
-    transform: translate(1229.5%, 11.5%);
-}
-
-#white5{
-    transform: translate(387%, 132.5%);
-}
-
-#white6{
-    transform: translate(627.5%, 132.5%);
-}
-
-#white7{
-    transform: translate(868%, 132.5%);
-}
-
-#white8{
-    transform: translate(1108.5%, 132.5%);
-}
-
-#white9{
-    transform: translate(508%, 253.5%);
-}
-
-#white10{
-    transform: translate(748.5%, 253.5%);
-}
-
-#white11{
-    transform: translate(989%, 253.5%);
-}
-
-#white12{
-    transform: translate(1229.5%, 253.5%);
-}
-
