@@ -8,18 +8,22 @@ var coloredTiles = [];
 var isScore;
 var potentialScore;
 var score;
+var turn = "white";
+var anotherMove = false;
 
 class tile{
-    constructor(row, col, available, color){
+    constructor(row, col, available, color, king){
         this.row = row;
         this.col = col;
         this.available = available;
         this.color = color;
+        this.king = king;
     }
 
     getColor(){
         return this.color;
     }
+
     getRow(){
         return this.row;
     }
@@ -30,6 +34,14 @@ class tile{
 
     getAvailable(){
         return this.available;
+    }
+
+    getKing(){
+        return this.king;
+    }
+
+    setKing(){
+        this.king = true;
     }
 
     setColor(newColor){
@@ -104,30 +116,31 @@ window.onload = function() {
         }
     }
     
-    tokens.push(new token (1, 1, 2, "white", false));
-    tokens.push(new token (2, 1, 4, "white", false));
-    tokens.push(new token (3, 1, 6, "white", false));
-    tokens.push(new token (4, 1, 8, "white", false));
-    tokens.push(new token (5, 2, 1, "white", false));
-    tokens.push(new token (6, 2, 3, "white", false));
-    tokens.push(new token (7, 2, 5, "white", false));
-    tokens.push(new token (8, 2, 7, "white", false));
-    tokens.push(new token (9, 3, 2, "white", false));
-    tokens.push(new token (10, 3, 4, "white", false));
-    tokens.push(new token (11, 3, 6, "white", false));
-    tokens.push(new token (12, 3, 8, "white", false));
-    tokens.push(new token (1, 6, 1, "red", false));
-    tokens.push(new token (2, 6, 3, "red", false));
-    tokens.push(new token (3, 6, 5, "red", false));
-    tokens.push(new token (4, 6, 7, "red", false));
-    tokens.push(new token (5, 7, 2, "red", false));
-    tokens.push(new token (6, 7, 4, "red", false));
-    tokens.push(new token (7, 7, 6, "red", false));
-    tokens.push(new token (8, 7, 8, "red", false));
-    tokens.push(new token (9, 8, 1, "red", false));
-    tokens.push(new token (10, 8, 3, "red", false));
-    tokens.push(new token (11, 8, 5, "red", false));
-    tokens.push(new token (12, 8, 7, "red", false));
+    tokens.push(new token (1, 1, 2, "white", false, false));
+    tokens.push(new token (2, 1, 4, "white", false, false));
+    tokens.push(new token (2, 1, 4, "white", false, false));
+    tokens.push(new token (3, 1, 6, "white", false, false));
+    tokens.push(new token (4, 1, 8, "white", false, false));
+    tokens.push(new token (5, 2, 1, "white", false, false));
+    tokens.push(new token (6, 2, 3, "white", false, false));
+    tokens.push(new token (7, 2, 5, "white", false, false));
+    tokens.push(new token (8, 2, 7, "white", false, false));
+    tokens.push(new token (9, 3, 2, "white", false, false));
+    tokens.push(new token (10, 3, 4, "white", false, false));
+    tokens.push(new token (11, 3, 6, "white", false, false));
+    tokens.push(new token (12, 3, 8, "white", false, false));
+    tokens.push(new token (1, 6, 1, "red", false, false));
+    tokens.push(new token (2, 6, 3, "red", false, false));
+    tokens.push(new token (3, 6, 5, "red", false, false));
+    tokens.push(new token (4, 6, 7, "red", false, false));
+    tokens.push(new token (5, 7, 2, "red", false, false));
+    tokens.push(new token (6, 7, 4, "red", false, false));
+    tokens.push(new token (7, 7, 6, "red", false, false));
+    tokens.push(new token (8, 7, 8, "red", false, false));
+    tokens.push(new token (9, 8, 1, "red", false, false));
+    tokens.push(new token (10, 8, 3, "red", false, false));
+    tokens.push(new token (11, 8, 5, "red", false, false));
+    tokens.push(new token (12, 8, 7, "red", false, false));
 
     for(var i = 0; i<tiles.length; i++){
         for(var j=0; j<tokens.length; j++){
@@ -183,11 +196,11 @@ function move(token){
         return;
     }
 
-    if(tokenString.includes("white") && isTokenClicked == false){
+    if(tokenString.includes("white") && isTokenClicked == false && turn == "white"){
         whiteClick(tokenString);
     }
 
-    if(tokenString.includes("red") && isTokenClicked == false){
+    if(tokenString.includes("red") && isTokenClicked == false && turn == "red"){
         redClick(tokenString);
     }
 }
@@ -306,7 +319,7 @@ function whiteScoreAndRight(i, j){
             isTokenClicked = true;
             isTokenClickedTileRow = tokens[i].getRow();
             isTokenClickedTileCol = tokens[i].getCol();
-            isScore = true; 
+            isScore = true;
             for(var l=0; l<tokens.length; l++){
                 if(tiles[k].getCol() == tokens[l].getCol() && tiles[k].getRow() == tokens[l].getRow()){
                     potentialScore = tokens[l];
@@ -368,7 +381,7 @@ function moveTo(square){
 }
 
 function moveWhite(x, y, chosenPos, i, j){
-
+    anotherMove = false;
     if(tiles[i].getCol() - 1 == tokens[j].getCol()){
         x += 120.25;
         y += 121;
@@ -410,7 +423,7 @@ function moveWhite(x, y, chosenPos, i, j){
 }
 
 function moveRed(x, y, chosenPos, i, j){
-
+    anotherMove = false;
     if(tiles[i].getCol() - 1 == tokens[j].getCol()){
         x += 120.25;
         y -= 121;
@@ -486,7 +499,12 @@ function setTileColorWhite(i, j, chosenPos){
     tokens[j].setCol(tokens[j].getCol() + chosenPos);
     tiles[i].setColor("white");
 
-    clearParameters();
+    anotherMoveWhite(j);
+
+    if(!anotherMove){
+        clearParameters();
+        turn = "red";
+    }
 }
 
 function setTileColorRed(i, j, chosenPos){
@@ -499,7 +517,74 @@ function setTileColorRed(i, j, chosenPos){
     tokens[j].setCol(tokens[j].getCol() - chosenPos);
     tiles[i].setColor("red");
 
-    clearParameters();
+    anotherMoveRed(j);
+
+    if(!anotherMove){
+        clearParameters();
+        turn = "white";
+    }
+}
+
+function anotherMoveWhite(j){
+    for(var k=0; k<tiles.length; k++){
+        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+            for(var l=0; l<tiles.length; l++){
+                if(tiles[l].getRow() + 1 == tokens[j].getRow() && tiles[l].getCol() + 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                    for(var m=1; m<13; m++){
+                        document.getElementById("white" + m).disabled = true;
+                        document.getElementById("red" + m).disabled = true;
+                    }
+                    anotherMove = true;
+                    whiteClick(tokens[j].getColor() + tokens[j].getId());
+                }
+            }
+        }
+
+        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+            for(var l=0; l<tiles.length; l++){
+                if(tiles[l].getRow() + 1 == tokens[j].getRow() && tiles[l].getCol() - 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                    for(var m=1; m<13; m++){
+                        document.getElementById("white" + m).disabled = true;
+                        document.getElementById("red" + m).disabled = true;
+                    }
+                    anotherMove = true;
+                    whiteClick(tokens[j].getColor() + tokens[j].getId());
+                }
+            }
+        }
+
+    }
+}
+
+function anotherMoveRed(j){
+    for(var k=0; k<tiles.length; k++){
+        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+            for(var l=0; l<tiles.length; l++){
+                if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() + 1 == tokens[j].getCol() && tiles[l].getColor() == "white" && tiles[l].getAvailable() == false){
+                    for(var m=1; m<13; m++){
+                        document.getElementById("white" + m).disabled = true;
+                        document.getElementById("red" + m).disabled = true;
+                    }
+                    anotherMove = true;
+                    redClick(tokens[j].getColor() + tokens[j].getId());
+                }
+            }
+        }
+
+        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+            for(var l=0; l<tiles.length; l++){
+                if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() - 1 == tokens[j].getCol() && tiles[l].getColor() == "white" && tiles[l].getAvailable() == false){
+                    for(var m=1; m<13; m++){
+                        document.getElementById("white" + m).disabled = true;
+                        document.getElementById("red" + m).disabled = true;
+                    }
+                    anotherMove = true;
+                    redClick(tokens[j].getColor() + tokens[j].getId());
+                }
+            }
+        }
+
+    }
 }
 
 function clearParameters(){
@@ -509,5 +594,8 @@ function clearParameters(){
     isTokenClicked = false;
     isTokenClickedTileCol = "";
     isTokenClickedTileRow = "";
-
+    for(var m=1; m<13; m++){
+        document.getElementById("white" + m).disabled = false;
+        document.getElementById("red" + m).disabled = false;
+    }
 }
