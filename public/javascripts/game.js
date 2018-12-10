@@ -139,7 +139,6 @@ window.onload = function() {
 
     tokens.push(new token (1, 1, 2, "white", false, false));
     tokens.push(new token (2, 1, 4, "white", false, false));
-    tokens.push(new token (2, 1, 4, "white", false, false));
     tokens.push(new token (3, 1, 6, "white", false, false));
     tokens.push(new token (4, 1, 8, "white", false, false));
     tokens.push(new token (5, 2, 1, "white", false, false));
@@ -227,11 +226,9 @@ function move(token){
 }
 
 function redClick(tokenString){
-    console.log(anotherMove);
     var tokenNumber = parseInt(tokenString.substring(3));
     for(var i=12; i<tokens.length; i++){
         if(tokenNumber == tokens[i].getId()){
-            console.log(tokens[i]);
             for(var j=0; j<tiles.length; j++){
                 
                 if( (tiles[j].getCol() + 1 == tokens[i].getCol() || tiles[j].getCol() - 1 == tokens[i].getCol()) && tiles[j].getRow() + 1 == tokens[i].getRow() && tiles[j].getAvailable() == true && anotherMove == false){
@@ -315,9 +312,6 @@ function whiteClick(tokenString){
         for(var i=0; i<tokens.length/2; i++){
             if(tokenNumber == tokens[i].getId()){
                 for(var j=0; j<tiles.length; j++){
-                    
-
-                    console.log(anotherMove);
                     if( (tiles[j].getCol() + 1 == tokens[i].getCol() || tiles[j].getCol() - 1 == tokens[i].getCol()) && tiles[j].getRow() - 1 == tokens[i].getRow() && tiles[j].getAvailable() == true && anotherMove == false){
                         whiteMoveToSquare(i, j);
                     }
@@ -860,10 +854,16 @@ function setTileColorRed(i, j, chosenPos){
 }
 
 function anotherMoveWhite(j){
+    console.log("White 1");
+    console.log(tokens[j]);
     for(var k=0; k<tiles.length; k++){
-        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true && score == true){
+            console.log("White 2");
+            console.log(tiles[k]);
             for(var l=0; l<tiles.length; l++){
-                if(tiles[l].getRow() + 1 == tokens[j].getRow() && tiles[l].getCol() + 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() + 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                    console.log("White 3");
+                    console.log(tiles[l]);
                     for(var m=1; m<13; m++){
                         document.getElementById("white" + m).disabled = true;
                         document.getElementById("red" + m).disabled = true;
@@ -874,10 +874,13 @@ function anotherMoveWhite(j){
             }
         }
 
-        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
-            console.log(tokens[j]);
+        if(tiles[k].getRow() - 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true && score == true){
+            console.log("White 4");
+            console.log(tiles[k]);
             for(var l=0; l<tiles.length; l++){
-                if(tiles[l].getRow() + 1 == tokens[j].getRow() && tiles[l].getCol() - 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() - 1 == tokens[j].getCol() && tiles[l].getColor() == "red" && tiles[l].getAvailable() == false){
+                    console.log("White 5");
+                    console.log(tiles[l]);
                     for(var m=1; m<13; m++){
                         document.getElementById("white" + m).disabled = true;
                         document.getElementById("red" + m).disabled = true;
@@ -892,29 +895,37 @@ function anotherMoveWhite(j){
 }
 
 function anotherMoveRed(j){
+    console.log("Red 1");
+    console.log(tokens[j]);
     for(var k=0; k<tiles.length; k++){
-        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() + 2 == tokens[j].getCol() && tiles[k].getAvailable() == true && score == true){
+            console.log("Red 2");
+            console.log(tiles[k]);
             for(var l=0; l<tiles.length; l++){
                 if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() + 1 == tokens[j].getCol() && tiles[l].getColor() == "white" && tiles[l].getAvailable() == false){
+                    console.log("Red 3");
+                    console.log(tiles[l]);
                     for(var m=1; m<13; m++){
                         document.getElementById("white" + m).disabled = true;
                         document.getElementById("red" + m).disabled = true;
                     }
-                    console.log(tiles[l]);
                     anotherMove = true;
                     redClick(tokens[j].getColor() + tokens[j].getId());
                 }
             }
         }
 
-        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true){
+        if(tiles[k].getRow() + 2 == tokens[j].getRow() && tiles[k].getCol() - 2 == tokens[j].getCol() && tiles[k].getAvailable() == true && score == true){
+            console.log("Red 4");
+            console.log(tiles[k]);
             for(var l=0; l<tiles.length; l++){
                 if(tiles[l].getRow() - 1 == tokens[j].getRow() && tiles[l].getCol() - 1 == tokens[j].getCol() && tiles[l].getColor() == "white" && tiles[l].getAvailable() == false){
+                    console.log("White 5");
+                    console.log(tiles[l]);
                     for(var m=1; m<13; m++){
                         document.getElementById("white" + m).disabled = true;
                         document.getElementById("red" + m).disabled = true;
                     }
-                    console.log(tiles[l]);
                     anotherMove = true;
                     redClick(tokens[j].getColor() + tokens[j].getId());
                 }
@@ -936,4 +947,5 @@ function clearParameters(){
         document.getElementById("red" + m).disabled = false;
     }
     kingMove = false;
+
 }
