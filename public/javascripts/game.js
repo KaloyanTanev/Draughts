@@ -491,8 +491,6 @@ function whiteScoreAndLeftKing(i, j){
 }
 
 
-
-
 function moveTo(square){
     if(isTokenClicked == true){
         var currentRow = parseInt(square.substring(6, 7));
