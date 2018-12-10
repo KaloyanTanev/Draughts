@@ -12,6 +12,8 @@ var turn = "white";
 var anotherMove = false;
 var kingMove = false;
 var isXOrYMoved;
+var scoreCounterWhite = 0;
+var scoreCounterRed = 0;
 var minutes = 0;
 var seconds = 0;
 
@@ -98,8 +100,7 @@ class token{
     remove(){
         document.getElementById(this.color + this.id).disabled = true;
         document.getElementById(this.color + this.id).style.backgroundColor = "transparent";
-        document.getElementById(this.color + this.id).style.paddingTop = "0%";
-        document.getElementById(this.color + this.id).style.paddingRight = "0%";
+        document.getElementById(this.color + this.id).style.transform = "translate(-1000%, -1000%)";
         this.row = -1000;
         this.col = -1000;
     }
@@ -114,7 +115,18 @@ window.onload = function() {
                 seconds = 0;
                 minutes +=1;
             }
-            document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+            if(minutes>=10 && seconds >= 10){
+                document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+            }
+            if(minutes<10 && seconds >= 10){
+                document.getElementById("timer").innerHTML = "0" + minutes + ":" + seconds;
+            }
+            if(minutes>=10 && seconds < 10){
+                document.getElementById("timer").innerHTML = minutes + ":0" + seconds;
+            }
+            if(minutes<10 && seconds < 10){
+                document.getElementById("timer").innerHTML = "0" + minutes + ":0" + seconds;
+            }
         },
         1000
       );
@@ -769,6 +781,9 @@ function setTileColorWhite(i, j, chosenPos){
     if(kingMove == false){
         if(score == true){
             tokens[j].setRow(tokens[j].getRow() + 2);
+            scoreCounterWhite++;
+            var scoreToHTML = "x " + scoreCounterWhite;
+            document.getElementById("redScore").innerHTML = scoreToHTML;
         }
         else{
             tokens[j].setRow(tokens[j].getRow() + 1);
@@ -779,6 +794,9 @@ function setTileColorWhite(i, j, chosenPos){
     else{
         if(score == true){
             tokens[j].setRow(tokens[j].getRow() - 2);
+            scoreCounterWhite++;
+            var scoreToHTML = "x " + scoreCounterWhite;
+            document.getElementById("redScore").innerHTML = scoreToHTML;
         }
         else{
             tokens[j].setRow(tokens[j].getRow() - 1);
@@ -795,6 +813,7 @@ function setTileColorWhite(i, j, chosenPos){
 
     if(!anotherMove){
         turn = "red";
+        document.getElementById("moveCircle").style.backgroundColor = "#9A3131";
         clearParameters();
     }
 }
@@ -803,6 +822,9 @@ function setTileColorRed(i, j, chosenPos){
     if(kingMove == false){
         if(score == true){
             tokens[j].setRow(tokens[j].getRow() - 2);
+            scoreCounterRed++;
+            var scoreToHTML = "x " + scoreCounterRed;
+            document.getElementById("whiteScore").innerHTML = scoreToHTML;
         }
         else{
             tokens[j].setRow(tokens[j].getRow() - 1);
@@ -813,6 +835,9 @@ function setTileColorRed(i, j, chosenPos){
     else{
         if(score == true){
             tokens[j].setRow(tokens[j].getRow() + 2);
+            scoreCounterRed++;
+            var scoreToHTML = "x " + scoreCounterRed;
+            document.getElementById("whiteScore").innerHTML = scoreToHTML;
         }
         else{
             tokens[j].setRow(tokens[j].getRow() + 1);
@@ -829,6 +854,7 @@ function setTileColorRed(i, j, chosenPos){
 
     if(!anotherMove){
         clearParameters();
+        document.getElementById("moveCircle").style.backgroundColor = "#F2F2F2";
         turn = "white";
     }
 }

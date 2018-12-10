@@ -60,6 +60,7 @@ button:focus{
     padding-right: 4%;
     border-radius: 50%;
     box-shadow: 3px 3px 10px 1px rgb(24, 24, 24);
+    background-color: #F2F2F2;
 }
 
 #move{
