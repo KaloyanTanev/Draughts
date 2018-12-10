@@ -1,31 +1,56 @@
 var express = require('express');
-var http = require('http');
-var path = require('path');
-var socketIO = require('socket.io');
 var app = express();
-var server = http.Server(app);
-var io = socketIO(server);
+var server = require('http').Server(app);
+var io = require('socket.io').listen(server);
 
 
-app.set('port', 6969);
+app.use('/public',express.static(__dirname + '/public'));
 
-
-app.use('/public', express.static(__dirname + '/public/'));
-
-
-// Routing
-app.get('/', function(request, response) {
-  response.sendFile(path.join(__dirname, 'index.html'));
-});
-app.get('/gamescreen', function(request, response) {
-  response.sendFile(path.join(__dirname, 'gamescreen.html'));
+app.get('/',function(req,res){
+    res.sendFile(__dirname+'/index.html');
 });
 
-// Starts the server.
-server.listen(6969, function() {
-  console.log('kurec');
+app.get('/gamescreen',function(req,res){
+  res.sendFile(__dirname+'/gamescreen.html');
 });
 
 
-io.on('connection', function(socket) {
+server.listen(6969,function(){ 
+  console.log('Server runing');
 });
+
+
+server.lastPlayderID = 0; 
+
+io.on('connection',function(socket){
+    socket.on('newplayer',function(){
+        socket.player = {
+            id: server.lastPlayderID++,
+            x: randomInt(100,400),
+            y: randomInt(100,400)
+        };
+        socket.emit('allplayers',getAllPlayers());
+        socket.broadcast.emit('newplayer',socket.player);
+
+        socket.on('disconnect',function(){
+          io.emit('remove',socket.player.id);
+      });
+    });
+});
+
+function getAllPlayers(){
+    var players = [];
+    Object.keys(io.sockets.connected).forEach(function(socketID){
+        var player = io.sockets.connected[socketID].player;
+        if(player) players.push(player);
+    });
+    return players;
+}
+
+function randomInt (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
+
+if(io.readyState === io.OPEN){
+  console.log('WebSocket on');
+}
