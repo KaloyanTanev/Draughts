@@ -12,6 +12,8 @@ var turn = "white";
 var anotherMove = false;
 var kingMove = false;
 var isXOrYMoved;
+var minutes = 0;
+var seconds = 0;
 
 class tile{
     constructor(row, col, available, color){
@@ -105,12 +107,24 @@ class token{
 
 window.onload = function() {
 
+    setInterval(
+        () => {
+            seconds++;
+            if(seconds == 60){
+                seconds = 0;
+                minutes +=1;
+            }
+            document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+        },
+        1000
+      );
+
     for(var i=1; i<9; i++){
         for(var j=1; j<9; j++){
             tiles.push( new tile(i, j, false));
         }
     }
-    
+
     tokens.push(new token (1, 1, 2, "white", false, false));
     tokens.push(new token (2, 1, 4, "white", false, false));
     tokens.push(new token (2, 1, 4, "white", false, false));
